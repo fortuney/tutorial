@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script src="vue/vue.js"></script>
+    </head>
+    <body>
+        <div style="text-align:left">
+            <div style="font-size: 10px;color: #555555;">
+                <span> This is the hello world app for Vue tutorial!</span>
+                <br/>
+                <span> Fortune @2019-01-25</span>
+            </div>
+        </div>
+        <div  id="v01" style="text-align: center">
+            <div >
+                <span v-bind:title = "hints" style="font-size:32px"> {{message}} </span>
+            </div>
+            <br/>
+            <div>
+                <button v-on:click="toggleDisplay">
+                    {{show?"Hide":"Show"}}
+                </button>
+            </div>
+        </div>
+        <script>
+            var app = new Vue({
+                el: "#v01",
+                data: {
+                    hints: "Loaded at " + new Date().toLocaleTimeString() + "!",
+                    show:  false,
+                    fullName: {
+                        firstName: "Fortune",
+                        lastName: "Yan"
+                    }
+                },
+                computed: {
+                    message: function () {
+                        return "Hello " + (this.show? this.fullName.firstName+"."+this.fullName.lastName:"world")+"!";
+                    } 
+                },
+                methods: {
+                    toggleDisplay: function(){
+                        this.show = !this.show
+                    }
+                }
+            })
+        </script>
+
+    </body>
+</html>
